@@ -1,4 +1,4 @@
-readme_content = """# Multi-Agent AI System for Web Search and Finance Analysis
+# Multi-Agent AI System for Web Search and Finance Analysis
 
 ## Project Overview
 This project is a **multi-agent AI system** that integrates different AI-powered agents to perform **web searches** and **financial analysis**. It utilizes the **Phi framework**, **Groq models**, and **various tools** for enhanced automation and intelligent decision-making.
