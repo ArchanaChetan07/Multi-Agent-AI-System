@@ -1,9 +1,8 @@
-phidata 
-python-dotenv
-yfinance
-packaging
-duckduckgo-search
-fastapi
-uvicorn
-groq
-openai
+# Core (enough for DEMO_MODE + offline pytest)
+python-dotenv>=1.0.0
+pytest>=7.0.0
+
+# Optional live tools (not required for tests)
+# duckduckgo-search>=6.0.0
+# yfinance>=0.2.40
+# groq>=0.9.0

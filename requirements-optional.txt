@@ -1,0 +1,4 @@
+# Optional live integrations (install when not using DEMO_MODE)
+duckduckgo-search>=6.0.0
+yfinance>=0.2.40
+groq>=0.9.0
