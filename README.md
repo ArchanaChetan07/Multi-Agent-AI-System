@@ -1,100 +1,149 @@
-# Multi-Agent-AI-System
+# Multi-Agent AI System
 
-Python · multi-agent · LLM · LangChain · FastAPI · Kubernetes · Docker · MCP · CI/CD · MLOps. Repo scale: 12504 files; GitHub Actions CI; automated tests; 5005 Python modules. Agentic systems with tool use, orchestration, and measurable task outcomes.
+### Finance + web-search agents orchestrated with plan → observe → revise tracing
 
-## Results (numbers)
+[![CI](https://github.com/ArchanaChetan07/Multi-Agent-AI-System/actions/workflows/ci.yml/badge.svg)](https://github.com/ArchanaChetan07/Multi-Agent-AI-System/actions/workflows/ci.yml)
+[![Python](https://img.shields.io/badge/Python-3.10%2B-3776AB?logo=python&logoColor=white)](https://www.python.org/)
+[![Tests](https://img.shields.io/badge/pytest-14%20tests-1f8a4c)](tests/test_multi_agent.py)
+[![License](https://img.shields.io/badge/license-see%20repo-2d3748)](#license)
 
-| Metric | Value |
+Lightweight multi-agent runner that turns a natural-language market question into a routed plan, executes specialized agents (finance + web search), optionally revises when observations are empty, and returns an answer with a structured execution trace. Designed to run fully offline in **DEMO_MODE** for CI, with optional live tools (yfinance / DuckDuckGo / Groq).
+
+---
+
+## Key Results
+
+| Metric | Value | Source |
+|---|---|---|
+| Agent roles | **2** (`finance`, `web_search`) | `multi_agent/agents.py` |
+| Orchestrator stages | plan → route → observe → revise → finish | `multi_agent/orchestrator.py` |
+| Unit tests | **14** | `tests/test_multi_agent.py` |
+| Offline CI path | `DEMO_MODE=1` (deterministic tool stubs) | `multi_agent/config.py` |
+| CLI modes | text / `--json` / `--live` / `--groq-polish` | `main.py` |
+| Tracked source files | **16** | git tree |
+
+---
+
+## Architecture
+
+```mermaid
+flowchart TB
+    T["User task string"] --> O[AgentOrchestrator]
+    O --> P[Plan steps by role]
+    P --> R{Route}
+    R -->|finance| F[FinanceAgent]
+    R -->|web_search| W[WebSearchAgent]
+    F --> TL[Tools: yfinance or DEMO snapshot]
+    W --> TS[Tools: DuckDuckGo or DEMO hits]
+    TL --> OBS[Observations]
+    TS --> OBS
+    OBS --> REV{Needs revision?}
+    REV -->|yes| P
+    REV -->|no| A[Compose answer]
+    A --> TR[Tracer events]
+    TR --> OUT["Answer + plan + observations + trace"]
+```
+
+**How it works:** heuristic planning inspects the task text for finance vs news cues, runs the matching agents, revises to both roles if observations are empty, and records every stage in a `Tracer` for debugging/CI assertions.
+
+---
+
+## Tech Stack
+
+| Layer | Choice |
 |---|---|
-| Tracked repository files | **12504** |
-| Python modules | **5005** |
-| Notebooks | **0** |
-| Markdown docs | **11** |
-| CI workflows present | **Yes** |
-| Automated tests present | **Yes** |
-| Project highlights | **See repository artifacts for measured results.** |
+| Language | Python 3 |
+| Core deps | `python-dotenv`, `pytest` |
+| Optional live tools | `yfinance`, `duckduckgo-search`, `groq` |
+| Optional polish model | Groq `llama-3.1-8b-instant` (env `GROQ_MODEL`) |
+| CI | GitHub Actions + pytest under `DEMO_MODE` |
 
-## Tech stack
+---
 
-- **Primary language:** Python
-- **Languages (GitHub):** Python (61192586 bytes), C (1113089 bytes), Cython (1023590 bytes), XSLT (153479 bytes), C++ (105804 bytes), Fortran (39272 bytes)
-- **Focus area:** agent
-- **Tooling keywords:** Python, machine-learning, CI/CD, API, Docker, Kubernetes, FastAPI, Prometheus, testing, automation, MLOps, LLM
+## Features
 
-## Architecture (logical)
+- Explicit agent roles with a shared `AgentRole` protocol
+- Deterministic **DEMO** finance snapshots and search hits for offline runs
+- Ticker extraction for symbols like `NVDA` / `AAPL` / `TSLA`
+- End-to-end `RunResult` object (task, plan, observations, revisions, answer, trace)
+- JSON CLI output for automation
+- Optional Groq polish when `GROQ_API_KEY` is set (live path only)
 
-\\	ext
-Inputs → Processing / models / agents → Evaluation & metrics → CI checks → Artifacts
-\
-## Engineering practices
+---
 
-1. Reproducible layout with clear module boundaries  
-2. Automated validation via CI and/or tests when present  
-3. Documentation that states measurable outcomes, not slogans  
-4. Skill surface aligned to common JD keywords: Python, machine learning, NLP/LLM, Kubernetes, Docker, observability, data pipelines  
+## Installation & Usage
 
-## Quick start
-
-\\ash
+```bash
 git clone https://github.com/ArchanaChetan07/Multi-Agent-AI-System.git
 cd Multi-Agent-AI-System
-# Install project requirements (see requirements.txt / pyproject.toml / environment files if present)
-# Run tests or main entrypoints documented in this repo
-\
-## Skills demonstrated
+python -m venv .venv
+# Windows: .venv\Scripts\activate
+source .venv/bin/activate
+pip install -r requirements.txt
+```
 
-Python · machine-learning · CI/CD · API design · testing · automation · Docker · Kubernetes · FastAPI · Prometheus · data-science · LLM · MLOps · software-engineering · benchmarking · observability
+```bash
+# Offline demo (default when no Groq key / DEMO_MODE=1)
+python main.py "Summarize analyst recommendation and share the latest news for NVDA"
 
-## License / notice
+# Structured output
+python main.py --json "price of AAPL stock"
 
-See repository license file if present. Metrics above are derived from repository structure and previously published validation notes where available.
+# Prefer live tools (falls back to demo on failure)
+pip install -r requirements-optional.txt   # if present / uncommented deps
+python main.py --live "latest news for MSFT"
 
+# Tests
+pytest -q
+```
 
-### Extended notes
+---
 
-This section expands documentation for completeness: reproducibility, keyword coverage for Python, machine-learning, CI/CD, API, Docker, Kubernetes, FastAPI, Prometheus, testing, automation, MLOps, LLM, data-science, software-engineering, benchmarking, and observability practices used across the portfolio.
+## Project Structure
 
+```text
+Multi-Agent-AI-System/
+├── main.py                      # CLI entrypoint
+├── multi_agent/
+│   ├── agents.py                # FinanceAgent, WebSearchAgent
+│   ├── orchestrator.py          # plan / route / revise / finish
+│   ├── config.py                # DEMO_MODE + Groq config
+│   ├── tracing.py               # event tracer
+│   └── tools/
+│       ├── finance.py           # ticker extract + lookup
+│       └── web_search.py        # search tool
+├── tests/test_multi_agent.py    # 14 offline unit tests
+├── requirements.txt
+└── .github/workflows/ci.yml
+```
 
-### Extended notes
+---
 
-This section expands documentation for completeness: reproducibility, keyword coverage for Python, machine-learning, CI/CD, API, Docker, Kubernetes, FastAPI, Prometheus, testing, automation, MLOps, LLM, data-science, software-engineering, benchmarking, and observability practices used across the portfolio.
+## Sample Output (DEMO_MODE)
 
+```text
+NVDA @ <demo price> USD; recommendation=<demo>; source=demo
+... plus DEMO web snippets ...
 
-### Extended notes
+--- trace ---
+[plan] ...
+[route] ...
+[observe] ...
+[finish] ...
+```
 
-This section expands documentation for completeness: reproducibility, keyword coverage for Python, machine-learning, CI/CD, API, Docker, Kubernetes, FastAPI, Prometheus, testing, automation, MLOps, LLM, data-science, software-engineering, benchmarking, and observability practices used across the portfolio.
+Tests assert trace kinds include `plan`, `route`, `observe`, and `finish` for the NVDA finance+news path.
 
+---
 
-### Extended notes
+## Future Improvements
 
-This section expands documentation for completeness: reproducibility, keyword coverage for Python, machine-learning, CI/CD, API, Docker, Kubernetes, FastAPI, Prometheus, testing, automation, MLOps, LLM, data-science, software-engineering, benchmarking, and observability practices used across the portfolio.
+- Add a critic/verifier agent before final answer composition
+- Persist traces as OpenTelemetry spans for production ops
+- Expand planning beyond keyword heuristics (LLM planner behind a feature flag)
 
+---
 
-### Extended notes
+## License
 
-This section expands documentation for completeness: reproducibility, keyword coverage for Python, machine-learning, CI/CD, API, Docker, Kubernetes, FastAPI, Prometheus, testing, automation, MLOps, LLM, data-science, software-engineering, benchmarking, and observability practices used across the portfolio.
-
-
-### Extended notes
-
-This section expands documentation for completeness: reproducibility, keyword coverage for Python, machine-learning, CI/CD, API, Docker, Kubernetes, FastAPI, Prometheus, testing, automation, MLOps, LLM, data-science, software-engineering, benchmarking, and observability practices used across the portfolio.
-
-
-### Extended notes
-
-This section expands documentation for completeness: reproducibility, keyword coverage for Python, machine-learning, CI/CD, API, Docker, Kubernetes, FastAPI, Prometheus, testing, automation, MLOps, LLM, data-science, software-engineering, benchmarking, and observability practices used across the portfolio.
-
-
-### Extended notes
-
-This section expands documentation for completeness: reproducibility, keyword coverage for Python, machine-learning, CI/CD, API, Docker, Kubernetes, FastAPI, Prometheus, testing, automation, MLOps, LLM, data-science, software-engineering, benchmarking, and observability practices used across the portfolio.
-
-
-### Extended notes
-
-This section expands documentation for completeness: reproducibility, keyword coverage for Python, machine-learning, CI/CD, API, Docker, Kubernetes, FastAPI, Prometheus, testing, automation, MLOps, LLM, data-science, software-engineering, benchmarking, and observability practices used across the portfolio.
-
-
-### Extended notes
-
-This section expands documentation for completeness: reproducibility, keyword coverage for Python, machine-learning, CI/CD, API, Docker, Kubernetes, FastAPI, Prometheus, testing, automation, MLOps, LLM, data-science, software-engineering, benchmarking, and observability practices used across the portfolio.
+See repository license file if present.
