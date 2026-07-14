@@ -1,149 +1,151 @@
-# Multi-Agent AI System
+# Multi-Agent AI System (Finance + Web Search)
 
-### Finance + web-search agents orchestrated with plan → observe → revise tracing
+### Lightweight orchestrator that plans finance vs web-search steps, observes results, optionally revises, with DEMO_MODE and tracing.
 
-[![CI](https://github.com/ArchanaChetan07/Multi-Agent-AI-System/actions/workflows/ci.yml/badge.svg)](https://github.com/ArchanaChetan07/Multi-Agent-AI-System/actions/workflows/ci.yml)
-[![Python](https://img.shields.io/badge/Python-3.10%2B-3776AB?logo=python&logoColor=white)](https://www.python.org/)
-[![Tests](https://img.shields.io/badge/pytest-14%20tests-1f8a4c)](tests/test_multi_agent.py)
-[![License](https://img.shields.io/badge/license-see%20repo-2d3748)](#license)
-
-Lightweight multi-agent runner that turns a natural-language market question into a routed plan, executes specialized agents (finance + web search), optionally revises when observations are empty, and returns an answer with a structured execution trace. Designed to run fully offline in **DEMO_MODE** for CI, with optional live tools (yfinance / DuckDuckGo / Groq).
+[![GitHub](https://img.shields.io/badge/repo-Multi-Agent-AI-System-181717?logo=github)](https://github.com/ArchanaChetan07/Multi-Agent-AI-System)
+[![Language](https://img.shields.io/badge/language-Python-3572A5)](https://github.com/ArchanaChetan07/Multi-Agent-AI-System)
+[![License](https://img.shields.io/badge/license-See%20repository-yellow)](https://github.com/ArchanaChetan07/Multi-Agent-AI-System)
+[![CI](https://img.shields.io/badge/CI-GitHub%20Actions-2088FF?logo=githubactions&logoColor=white)](https://github.com/ArchanaChetan07/Multi-Agent-AI-System/actions)
 
 ---
 
-## Key Results
+## Overview
 
-| Metric | Value | Source |
-|---|---|---|
-| Agent roles | **2** (`finance`, `web_search`) | `multi_agent/agents.py` |
-| Orchestrator stages | plan → route → observe → revise → finish | `multi_agent/orchestrator.py` |
-| Unit tests | **14** | `tests/test_multi_agent.py` |
-| Offline CI path | `DEMO_MODE=1` (deterministic tool stubs) | `multi_agent/config.py` |
-| CLI modes | text / `--json` / `--live` / `--groq-polish` | `main.py` |
-| Tracked source files | **16** | git tree |
+Need a minimal, testable multi-agent scaffold for market questions without depending on a heavyweight framework for CI.
+
+AgentOrchestrator plans steps from task keywords; FinanceAgent and WebSearchAgent tools; demo mode bypass; tracing list; pytest; optional requirements for richer stacks.
+
+Compact 16-file repository demonstrating plan→route→observe→revise orchestration (README incorrectly claims 12k+ files).
+
+This repository is maintained as **production-minded portfolio work**: clear architecture, automated checks where present, and metrics that are **traceable to committed artifacts** (never invented).
 
 ---
 
 ## Architecture
 
+Task → Orchestrator.plan → FinanceAgent and/or WebSearchAgent → observations → optional revise → final answer + trace
+
 ```mermaid
-flowchart TB
-    T["User task string"] --> O[AgentOrchestrator]
-    O --> P[Plan steps by role]
-    P --> R{Route}
-    R -->|finance| F[FinanceAgent]
-    R -->|web_search| W[WebSearchAgent]
-    F --> TL[Tools: yfinance or DEMO snapshot]
-    W --> TS[Tools: DuckDuckGo or DEMO hits]
-    TL --> OBS[Observations]
-    TS --> OBS
-    OBS --> REV{Needs revision?}
-    REV -->|yes| P
-    REV -->|no| A[Compose answer]
-    A --> TR[Tracer events]
-    TR --> OUT["Answer + plan + observations + trace"]
+flowchart TD
+  T[Task] --> O[AgentOrchestrator]
+  O --> F[FinanceAgent]
+  O --> W[WebSearchAgent]
+  F --> Obs[Observations]
+  W --> Obs
+  Obs --> R{Revise?}
+  R -->|yes| O
+  R -->|no| A[Answer + trace]
 ```
 
-**How it works:** heuristic planning inspects the task text for finance vs news cues, runs the matching agents, revises to both roles if observations are empty, and records every stage in a `Tracer` for debugging/CI assertions.
+```mermaid
+sequenceDiagram
+  participant U as User/Client
+  participant S as Service/Pipeline
+  participant E as Eval/Tools
+  U->>S: request / job
+  S->>E: execute
+  E-->>S: results
+  S-->>U: report / response
+```
 
 ---
 
-## Tech Stack
+## Results & repository facts
 
-| Layer | Choice |
+> Only values found in code, configs, tests, or generated reports are listed. Absence of a clinical/ML accuracy number means it was **not** published in-repo.
+
+| Metric | Value | Source |
+|---|---|---|
+| Tracked blobs on main | **16** | `git tree main` |
+| Tracked files | **16** | `git tree` |
+| Python modules | **10** | `git tree` |
+| Test-related paths | **1** | `git tree` |
+| CI workflows | **Yes** | `.github/workflows` |
+| Docker present | **No** | `repo root` |
+
+```mermaid
+%%{init: {'theme':'base'}}%%
+pie showData title Language composition (bytes)
+    "Python" : 100
+```
+
+---
+
+## Key features
+
+- Keyword-based multi-step planning
+- Finance + web search agent roles
+- Observation collection and revision hooks
+- DEMO_MODE for offline tests
+- Optional dependency extra file
+
+---
+
+## Tech stack
+
+| Layer | Technology |
 |---|---|
-| Language | Python 3 |
-| Core deps | `python-dotenv`, `pytest` |
-| Optional live tools | `yfinance`, `duckduckgo-search`, `groq` |
-| Optional polish model | Groq `llama-3.1-8b-instant` (env `GROQ_MODEL`) |
-| CI | GitHub Actions + pytest under `DEMO_MODE` |
+| language | Python |
+| agents | FinanceAgent / WebSearchAgent |
+| orchestration | AgentOrchestrator |
+| observability | multi_agent/tracing.py |
+| ci | GitHub Actions |
 
 ---
 
-## Features
+## Skills demonstrated
 
-- Explicit agent roles with a shared `AgentRole` protocol
-- Deterministic **DEMO** finance snapshots and search hits for offline runs
-- Ticker extraction for symbols like `NVDA` / `AAPL` / `TSLA`
-- End-to-end `RunResult` object (task, plan, observations, revisions, answer, trace)
-- JSON CLI output for automation
-- Optional Groq polish when `GROQ_API_KEY` is set (live path only)
+Python · custom orchestrator · pytest · CI/CD · testing · automation
+
+Keyword surface: **Python · Python · machine-learning · CI/CD · testing · API · Docker · automation · data-science · software-engineering · system-design · observability · LLM · cloud**
 
 ---
 
-## Installation & Usage
+## Project structure
+
+```text
+Multi-Agent-AI-System/
+├── main.py
+├── multi_agent/{orchestrator,agents,config,tracing}.py
+├── multi_agent/tools/{finance,web_search}.py
+├── tests/test_multi_agent.py
+└── requirements.txt
+```
+
+---
+
+## Installation & usage
 
 ```bash
 git clone https://github.com/ArchanaChetan07/Multi-Agent-AI-System.git
 cd Multi-Agent-AI-System
-python -m venv .venv
-# Windows: .venv\Scripts\activate
-source .venv/bin/activate
 pip install -r requirements.txt
-```
-
-```bash
-# Offline demo (default when no Groq key / DEMO_MODE=1)
-python main.py "Summarize analyst recommendation and share the latest news for NVDA"
-
-# Structured output
-python main.py --json "price of AAPL stock"
-
-# Prefer live tools (falls back to demo on failure)
-pip install -r requirements-optional.txt   # if present / uncommented deps
-python main.py --live "latest news for MSFT"
-
-# Tests
-pytest -q
+python main.py
 ```
 
 ---
 
-## Project Structure
+## How it works
 
-```text
-Multi-Agent-AI-System/
-├── main.py                      # CLI entrypoint
-├── multi_agent/
-│   ├── agents.py                # FinanceAgent, WebSearchAgent
-│   ├── orchestrator.py          # plan / route / revise / finish
-│   ├── config.py                # DEMO_MODE + Groq config
-│   ├── tracing.py               # event tracer
-│   └── tools/
-│       ├── finance.py           # ticker extract + lookup
-│       └── web_search.py        # search tool
-├── tests/test_multi_agent.py    # 14 offline unit tests
-├── requirements.txt
-└── .github/workflows/ci.yml
-```
+main constructs an AgentOrchestrator that decomposes a natural-language task into finance and/or web-search steps, executes agents, records observations/traces, and may revise the plan before synthesizing an answer—using demo stubs when enabled.
 
 ---
 
-## Sample Output (DEMO_MODE)
+## Future improvements
 
-```text
-NVDA @ <demo price> USD; recommendation=<demo>; source=demo
-... plus DEMO web snippets ...
-
---- trace ---
-[plan] ...
-[route] ...
-[observe] ...
-[finish] ...
-```
-
-Tests assert trace kinds include `plan`, `route`, `observe`, and `finish` for the NVDA finance+news path.
-
----
-
-## Future Improvements
-
-- Add a critic/verifier agent before final answer composition
-- Persist traces as OpenTelemetry spans for production ops
-- Expand planning beyond keyword heuristics (LLM planner behind a feature flag)
+- Fix README file-count exaggeration (12504 vs 16 blobs)
+- Add example traces as fixtures
+- Optional LangChain/phi backends behind the same interface
 
 ---
 
 ## License
 
-See repository license file if present.
+See repository.
+
+---
+
+<p align="center">
+  <b>Multi-Agent AI System (Finance + Web Search)</b><br/>
+  <a href="https://github.com/ArchanaChetan07/Multi-Agent-AI-System">github.com/ArchanaChetan07/Multi-Agent-AI-System</a>
+</p>
