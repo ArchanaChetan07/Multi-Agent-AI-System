@@ -8,8 +8,10 @@ on:
 
 jobs:
   test:
-    name: Pytest
+    name: Pytest + batch eval (DEMO_MODE)
     runs-on: ubuntu-latest
+    env:
+      DEMO_MODE: "1"
     steps:
       - uses: actions/checkout@v4
 
@@ -24,6 +26,13 @@ jobs:
           pip install -r requirements.txt
 
       - name: Run tests
-        env:
-          DEMO_MODE: "1"
         run: pytest tests/ -v --tb=short
+
+      - name: Batch outcome metrics
+        run: python scripts/batch_eval.py
+
+      - name: Upload metrics artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: batch-metrics
+          path: artifacts/batch_metrics.json
