@@ -1,0 +1,762 @@
+{
+  "n_tasks": 32,
+  "n_routing_scored": 31,
+  "completed": 31,
+  "completion_rate": 96.9,
+  "routing_correct": 28,
+  "routing_accuracy": 90.3,
+  "revised_runs": 0,
+  "revision_rate": 0.0,
+  "avg_revisions_per_run": 0.0,
+  "avg_latency_s": 0.0001,
+  "misroutes": [
+    {
+      "task_id": "adv-00",
+      "expected_kind": "web_search",
+      "plan_roles": [
+        "finance"
+      ],
+      "note": "expected_kind=web_search but plan_roles=['finance']"
+    },
+    {
+      "task_id": "adv-01",
+      "expected_kind": "web_search",
+      "plan_roles": [
+        "finance"
+      ],
+      "note": "expected_kind=web_search but plan_roles=['finance']"
+    },
+    {
+      "task_id": "adv-02",
+      "expected_kind": "web_search",
+      "plan_roles": [
+        "finance"
+      ],
+      "note": "expected_kind=web_search but plan_roles=['finance']"
+    }
+  ],
+  "incomplete": [
+    {
+      "task_id": "fail-empty",
+      "note": "empty/whitespace task rejected"
+    }
+  ],
+  "failure_patterns": [
+    "Keyword planner misroutes when non-finance questions contain finance trigger tokens (price, recommendation, ticker substrings like MSFT).",
+    "Empty/whitespace tasks return a rejection answer and do not finish successfully."
+  ],
+  "mode": "DEMO_MODE",
+  "per_task": [
+    {
+      "task_id": "fin-00",
+      "expected_kind": "finance",
+      "should_complete": true,
+      "plan_roles": [
+        "finance"
+      ],
+      "completed": true,
+      "routing_scored": true,
+      "routing_correct": true,
+      "revised": false,
+      "revision_count": 0,
+      "latency_s": 0.000141,
+      "failure_note": null,
+      "trace_kinds": [
+        "start",
+        "plan",
+        "route",
+        "observe",
+        "finish"
+      ]
+    },
+    {
+      "task_id": "fin-01",
+      "expected_kind": "finance",
+      "should_complete": true,
+      "plan_roles": [
+        "finance"
+      ],
+      "completed": true,
+      "routing_scored": true,
+      "routing_correct": true,
+      "revised": false,
+      "revision_count": 0,
+      "latency_s": 6.7e-05,
+      "failure_note": null,
+      "trace_kinds": [
+        "start",
+        "plan",
+        "route",
+        "observe",
+        "finish"
+      ]
+    },
+    {
+      "task_id": "fin-02",
+      "expected_kind": "finance",
+      "should_complete": true,
+      "plan_roles": [
+        "finance"
+      ],
+      "completed": true,
+      "routing_scored": true,
+      "routing_correct": true,
+      "revised": false,
+      "revision_count": 0,
+      "latency_s": 5.9e-05,
+      "failure_note": null,
+      "trace_kinds": [
+        "start",
+        "plan",
+        "route",
+        "observe",
+        "finish"
+      ]
+    },
+    {
+      "task_id": "fin-03",
+      "expected_kind": "finance",
+      "should_complete": true,
+      "plan_roles": [
+        "finance"
+      ],
+      "completed": true,
+      "routing_scored": true,
+      "routing_correct": true,
+      "revised": false,
+      "revision_count": 0,
+      "latency_s": 5.5e-05,
+      "failure_note": null,
+      "trace_kinds": [
+        "start",
+        "plan",
+        "route",
+        "observe",
+        "finish"
+      ]
+    },
+    {
+      "task_id": "fin-04",
+      "expected_kind": "finance",
+      "should_complete": true,
+      "plan_roles": [
+        "finance"
+      ],
+      "completed": true,
+      "routing_scored": true,
+      "routing_correct": true,
+      "revised": false,
+      "revision_count": 0,
+      "latency_s": 5.5e-05,
+      "failure_note": null,
+      "trace_kinds": [
+        "start",
+        "plan",
+        "route",
+        "observe",
+        "finish"
+      ]
+    },
+    {
+      "task_id": "fin-05",
+      "expected_kind": "finance",
+      "should_complete": true,
+      "plan_roles": [
+        "finance"
+      ],
+      "completed": true,
+      "routing_scored": true,
+      "routing_correct": true,
+      "revised": false,
+      "revision_count": 0,
+      "latency_s": 5.4e-05,
+      "failure_note": null,
+      "trace_kinds": [
+        "start",
+        "plan",
+        "route",
+        "observe",
+        "finish"
+      ]
+    },
+    {
+      "task_id": "fin-06",
+      "expected_kind": "finance",
+      "should_complete": true,
+      "plan_roles": [
+        "finance"
+      ],
+      "completed": true,
+      "routing_scored": true,
+      "routing_correct": true,
+      "revised": false,
+      "revision_count": 0,
+      "latency_s": 5.1e-05,
+      "failure_note": null,
+      "trace_kinds": [
+        "start",
+        "plan",
+        "route",
+        "observe",
+        "finish"
+      ]
+    },
+    {
+      "task_id": "fin-07",
+      "expected_kind": "finance",
+      "should_complete": true,
+      "plan_roles": [
+        "finance"
+      ],
+      "completed": true,
+      "routing_scored": true,
+      "routing_correct": true,
+      "revised": false,
+      "revision_count": 0,
+      "latency_s": 6.2e-05,
+      "failure_note": null,
+      "trace_kinds": [
+        "start",
+        "plan",
+        "route",
+        "observe",
+        "finish"
+      ]
+    },
+    {
+      "task_id": "fin-08",
+      "expected_kind": "finance",
+      "should_complete": true,
+      "plan_roles": [
+        "finance"
+      ],
+      "completed": true,
+      "routing_scored": true,
+      "routing_correct": true,
+      "revised": false,
+      "revision_count": 0,
+      "latency_s": 5.2e-05,
+      "failure_note": null,
+      "trace_kinds": [
+        "start",
+        "plan",
+        "route",
+        "observe",
+        "finish"
+      ]
+    },
+    {
+      "task_id": "fin-09",
+      "expected_kind": "finance",
+      "should_complete": true,
+      "plan_roles": [
+        "finance"
+      ],
+      "completed": true,
+      "routing_scored": true,
+      "routing_correct": true,
+      "revised": false,
+      "revision_count": 0,
+      "latency_s": 5.3e-05,
+      "failure_note": null,
+      "trace_kinds": [
+        "start",
+        "plan",
+        "route",
+        "observe",
+        "finish"
+      ]
+    },
+    {
+      "task_id": "fin-10",
+      "expected_kind": "finance",
+      "should_complete": true,
+      "plan_roles": [
+        "finance"
+      ],
+      "completed": true,
+      "routing_scored": true,
+      "routing_correct": true,
+      "revised": false,
+      "revision_count": 0,
+      "latency_s": 4.9e-05,
+      "failure_note": null,
+      "trace_kinds": [
+        "start",
+        "plan",
+        "route",
+        "observe",
+        "finish"
+      ]
+    },
+    {
+      "task_id": "fin-11",
+      "expected_kind": "finance",
+      "should_complete": true,
+      "plan_roles": [
+        "finance"
+      ],
+      "completed": true,
+      "routing_scored": true,
+      "routing_correct": true,
+      "revised": false,
+      "revision_count": 0,
+      "latency_s": 4.9e-05,
+      "failure_note": null,
+      "trace_kinds": [
+        "start",
+        "plan",
+        "route",
+        "observe",
+        "finish"
+      ]
+    },
+    {
+      "task_id": "web-00",
+      "expected_kind": "web_search",
+      "should_complete": true,
+      "plan_roles": [
+        "web_search"
+      ],
+      "completed": true,
+      "routing_scored": true,
+      "routing_correct": true,
+      "revised": false,
+      "revision_count": 0,
+      "latency_s": 5.8e-05,
+      "failure_note": null,
+      "trace_kinds": [
+        "start",
+        "plan",
+        "route",
+        "observe",
+        "finish"
+      ]
+    },
+    {
+      "task_id": "web-01",
+      "expected_kind": "web_search",
+      "should_complete": true,
+      "plan_roles": [
+        "web_search"
+      ],
+      "completed": true,
+      "routing_scored": true,
+      "routing_correct": true,
+      "revised": false,
+      "revision_count": 0,
+      "latency_s": 5.1e-05,
+      "failure_note": null,
+      "trace_kinds": [
+        "start",
+        "plan",
+        "route",
+        "observe",
+        "finish"
+      ]
+    },
+    {
+      "task_id": "web-02",
+      "expected_kind": "web_search",
+      "should_complete": true,
+      "plan_roles": [
+        "web_search"
+      ],
+      "completed": true,
+      "routing_scored": true,
+      "routing_correct": true,
+      "revised": false,
+      "revision_count": 0,
+      "latency_s": 5.3e-05,
+      "failure_note": null,
+      "trace_kinds": [
+        "start",
+        "plan",
+        "route",
+        "observe",
+        "finish"
+      ]
+    },
+    {
+      "task_id": "web-03",
+      "expected_kind": "web_search",
+      "should_complete": true,
+      "plan_roles": [
+        "web_search"
+      ],
+      "completed": true,
+      "routing_scored": true,
+      "routing_correct": true,
+      "revised": false,
+      "revision_count": 0,
+      "latency_s": 5.2e-05,
+      "failure_note": null,
+      "trace_kinds": [
+        "start",
+        "plan",
+        "route",
+        "observe",
+        "finish"
+      ]
+    },
+    {
+      "task_id": "web-04",
+      "expected_kind": "web_search",
+      "should_complete": true,
+      "plan_roles": [
+        "web_search"
+      ],
+      "completed": true,
+      "routing_scored": true,
+      "routing_correct": true,
+      "revised": false,
+      "revision_count": 0,
+      "latency_s": 4.9e-05,
+      "failure_note": null,
+      "trace_kinds": [
+        "start",
+        "plan",
+        "route",
+        "observe",
+        "finish"
+      ]
+    },
+    {
+      "task_id": "web-05",
+      "expected_kind": "web_search",
+      "should_complete": true,
+      "plan_roles": [
+        "web_search"
+      ],
+      "completed": true,
+      "routing_scored": true,
+      "routing_correct": true,
+      "revised": false,
+      "revision_count": 0,
+      "latency_s": 4.9e-05,
+      "failure_note": null,
+      "trace_kinds": [
+        "start",
+        "plan",
+        "route",
+        "observe",
+        "finish"
+      ]
+    },
+    {
+      "task_id": "web-06",
+      "expected_kind": "web_search",
+      "should_complete": true,
+      "plan_roles": [
+        "web_search"
+      ],
+      "completed": true,
+      "routing_scored": true,
+      "routing_correct": true,
+      "revised": false,
+      "revision_count": 0,
+      "latency_s": 4.9e-05,
+      "failure_note": null,
+      "trace_kinds": [
+        "start",
+        "plan",
+        "route",
+        "observe",
+        "finish"
+      ]
+    },
+    {
+      "task_id": "web-07",
+      "expected_kind": "web_search",
+      "should_complete": true,
+      "plan_roles": [
+        "web_search"
+      ],
+      "completed": true,
+      "routing_scored": true,
+      "routing_correct": true,
+      "revised": false,
+      "revision_count": 0,
+      "latency_s": 5.3e-05,
+      "failure_note": null,
+      "trace_kinds": [
+        "start",
+        "plan",
+        "route",
+        "observe",
+        "finish"
+      ]
+    },
+    {
+      "task_id": "web-08",
+      "expected_kind": "web_search",
+      "should_complete": true,
+      "plan_roles": [
+        "web_search"
+      ],
+      "completed": true,
+      "routing_scored": true,
+      "routing_correct": true,
+      "revised": false,
+      "revision_count": 0,
+      "latency_s": 5.4e-05,
+      "failure_note": null,
+      "trace_kinds": [
+        "start",
+        "plan",
+        "route",
+        "observe",
+        "finish"
+      ]
+    },
+    {
+      "task_id": "web-09",
+      "expected_kind": "web_search",
+      "should_complete": true,
+      "plan_roles": [
+        "web_search"
+      ],
+      "completed": true,
+      "routing_scored": true,
+      "routing_correct": true,
+      "revised": false,
+      "revision_count": 0,
+      "latency_s": 5e-05,
+      "failure_note": null,
+      "trace_kinds": [
+        "start",
+        "plan",
+        "route",
+        "observe",
+        "finish"
+      ]
+    },
+    {
+      "task_id": "web-10",
+      "expected_kind": "web_search",
+      "should_complete": true,
+      "plan_roles": [
+        "web_search"
+      ],
+      "completed": true,
+      "routing_scored": true,
+      "routing_correct": true,
+      "revised": false,
+      "revision_count": 0,
+      "latency_s": 5.2e-05,
+      "failure_note": null,
+      "trace_kinds": [
+        "start",
+        "plan",
+        "route",
+        "observe",
+        "finish"
+      ]
+    },
+    {
+      "task_id": "web-11",
+      "expected_kind": "web_search",
+      "should_complete": true,
+      "plan_roles": [
+        "web_search"
+      ],
+      "completed": true,
+      "routing_scored": true,
+      "routing_correct": true,
+      "revised": false,
+      "revision_count": 0,
+      "latency_s": 4.9e-05,
+      "failure_note": null,
+      "trace_kinds": [
+        "start",
+        "plan",
+        "route",
+        "observe",
+        "finish"
+      ]
+    },
+    {
+      "task_id": "both-00",
+      "expected_kind": "both",
+      "should_complete": true,
+      "plan_roles": [
+        "finance",
+        "web_search"
+      ],
+      "completed": true,
+      "routing_scored": true,
+      "routing_correct": true,
+      "revised": false,
+      "revision_count": 0,
+      "latency_s": 7.9e-05,
+      "failure_note": null,
+      "trace_kinds": [
+        "start",
+        "plan",
+        "route",
+        "observe",
+        "route",
+        "observe",
+        "finish"
+      ]
+    },
+    {
+      "task_id": "both-01",
+      "expected_kind": "both",
+      "should_complete": true,
+      "plan_roles": [
+        "finance",
+        "web_search"
+      ],
+      "completed": true,
+      "routing_scored": true,
+      "routing_correct": true,
+      "revised": false,
+      "revision_count": 0,
+      "latency_s": 7.9e-05,
+      "failure_note": null,
+      "trace_kinds": [
+        "start",
+        "plan",
+        "route",
+        "observe",
+        "route",
+        "observe",
+        "finish"
+      ]
+    },
+    {
+      "task_id": "both-02",
+      "expected_kind": "both",
+      "should_complete": true,
+      "plan_roles": [
+        "finance",
+        "web_search"
+      ],
+      "completed": true,
+      "routing_scored": true,
+      "routing_correct": true,
+      "revised": false,
+      "revision_count": 0,
+      "latency_s": 7.6e-05,
+      "failure_note": null,
+      "trace_kinds": [
+        "start",
+        "plan",
+        "route",
+        "observe",
+        "route",
+        "observe",
+        "finish"
+      ]
+    },
+    {
+      "task_id": "both-03",
+      "expected_kind": "both",
+      "should_complete": true,
+      "plan_roles": [
+        "finance",
+        "web_search"
+      ],
+      "completed": true,
+      "routing_scored": true,
+      "routing_correct": true,
+      "revised": false,
+      "revision_count": 0,
+      "latency_s": 9.1e-05,
+      "failure_note": null,
+      "trace_kinds": [
+        "start",
+        "plan",
+        "route",
+        "observe",
+        "route",
+        "observe",
+        "finish"
+      ]
+    },
+    {
+      "task_id": "adv-00",
+      "expected_kind": "web_search",
+      "should_complete": true,
+      "plan_roles": [
+        "finance"
+      ],
+      "completed": true,
+      "routing_scored": true,
+      "routing_correct": false,
+      "revised": false,
+      "revision_count": 0,
+      "latency_s": 6.3e-05,
+      "failure_note": "expected_kind=web_search but plan_roles=['finance']",
+      "trace_kinds": [
+        "start",
+        "plan",
+        "route",
+        "observe",
+        "finish"
+      ]
+    },
+    {
+      "task_id": "adv-01",
+      "expected_kind": "web_search",
+      "should_complete": true,
+      "plan_roles": [
+        "finance"
+      ],
+      "completed": true,
+      "routing_scored": true,
+      "routing_correct": false,
+      "revised": false,
+      "revision_count": 0,
+      "latency_s": 5.3e-05,
+      "failure_note": "expected_kind=web_search but plan_roles=['finance']",
+      "trace_kinds": [
+        "start",
+        "plan",
+        "route",
+        "observe",
+        "finish"
+      ]
+    },
+    {
+      "task_id": "adv-02",
+      "expected_kind": "web_search",
+      "should_complete": true,
+      "plan_roles": [
+        "finance"
+      ],
+      "completed": true,
+      "routing_scored": true,
+      "routing_correct": false,
+      "revised": false,
+      "revision_count": 0,
+      "latency_s": 5.9e-05,
+      "failure_note": "expected_kind=web_search but plan_roles=['finance']",
+      "trace_kinds": [
+        "start",
+        "plan",
+        "route",
+        "observe",
+        "finish"
+      ]
+    },
+    {
+      "task_id": "fail-empty",
+      "expected_kind": "web_search",
+      "should_complete": false,
+      "plan_roles": [],
+      "completed": false,
+      "routing_scored": false,
+      "routing_correct": false,
+      "revised": false,
+      "revision_count": 0,
+      "latency_s": 1.6e-05,
+      "failure_note": "empty/whitespace task rejected",
+      "trace_kinds": [
+        "start",
+        "error"
+      ]
+    }
+  ]
+}
