@@ -1,0 +1,10 @@
+.venv
+venv
+myenv
+.env
+__pycache__
+.pytest_cache
+.git
+*.pyc
+artifacts/*.json
+!artifacts/.gitkeep

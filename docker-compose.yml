@@ -1,0 +1,17 @@
+services:
+  eval:
+    build: .
+    environment:
+      DEMO_MODE: "1"
+    volumes:
+      - ./artifacts:/app/artifacts
+    command: ["python", "scripts/batch_eval.py", "--out", "artifacts/batch_metrics.json"]
+
+  # One-shot orchestrator demo (override task with: docker compose run demo -- "your task")
+  demo:
+    build: .
+    environment:
+      DEMO_MODE: "1"
+    profiles: ["demo"]
+    entrypoint: ["python", "main.py"]
+    command: ["Summarize analyst recommendation and share the latest news for NVDA"]
