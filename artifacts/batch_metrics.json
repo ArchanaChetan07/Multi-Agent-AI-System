@@ -46,6 +46,7 @@
     "Empty/whitespace tasks return a rejection answer and do not finish successfully."
   ],
   "mode": "DEMO_MODE",
+  "live_fallback_detected": false,
   "per_task": [
     {
       "task_id": "fin-00",
@@ -59,7 +60,11 @@
       "routing_correct": true,
       "revised": false,
       "revision_count": 0,
-      "latency_s": 0.000141,
+      "latency_s": 0.000199,
+      "execution_sources": [
+        "demo"
+      ],
+      "demo_fallback_detected": false,
       "failure_note": null,
       "trace_kinds": [
         "start",
@@ -81,7 +86,11 @@
       "routing_correct": true,
       "revised": false,
       "revision_count": 0,
-      "latency_s": 6.7e-05,
+      "latency_s": 0.000103,
+      "execution_sources": [
+        "demo"
+      ],
+      "demo_fallback_detected": false,
       "failure_note": null,
       "trace_kinds": [
         "start",
@@ -103,7 +112,11 @@
       "routing_correct": true,
       "revised": false,
       "revision_count": 0,
-      "latency_s": 5.9e-05,
+      "latency_s": 7.1e-05,
+      "execution_sources": [
+        "demo"
+      ],
+      "demo_fallback_detected": false,
       "failure_note": null,
       "trace_kinds": [
         "start",
@@ -125,7 +138,11 @@
       "routing_correct": true,
       "revised": false,
       "revision_count": 0,
-      "latency_s": 5.5e-05,
+      "latency_s": 6.8e-05,
+      "execution_sources": [
+        "demo"
+      ],
+      "demo_fallback_detected": false,
       "failure_note": null,
       "trace_kinds": [
         "start",
@@ -147,7 +164,11 @@
       "routing_correct": true,
       "revised": false,
       "revision_count": 0,
-      "latency_s": 5.5e-05,
+      "latency_s": 6.7e-05,
+      "execution_sources": [
+        "demo"
+      ],
+      "demo_fallback_detected": false,
       "failure_note": null,
       "trace_kinds": [
         "start",
@@ -169,7 +190,11 @@
       "routing_correct": true,
       "revised": false,
       "revision_count": 0,
-      "latency_s": 5.4e-05,
+      "latency_s": 6.8e-05,
+      "execution_sources": [
+        "demo"
+      ],
+      "demo_fallback_detected": false,
       "failure_note": null,
       "trace_kinds": [
         "start",
@@ -191,7 +216,11 @@
       "routing_correct": true,
       "revised": false,
       "revision_count": 0,
-      "latency_s": 5.1e-05,
+      "latency_s": 6.2e-05,
+      "execution_sources": [
+        "demo"
+      ],
+      "demo_fallback_detected": false,
       "failure_note": null,
       "trace_kinds": [
         "start",
@@ -213,7 +242,11 @@
       "routing_correct": true,
       "revised": false,
       "revision_count": 0,
-      "latency_s": 6.2e-05,
+      "latency_s": 7.2e-05,
+      "execution_sources": [
+        "demo"
+      ],
+      "demo_fallback_detected": false,
       "failure_note": null,
       "trace_kinds": [
         "start",
@@ -235,7 +268,11 @@
       "routing_correct": true,
       "revised": false,
       "revision_count": 0,
-      "latency_s": 5.2e-05,
+      "latency_s": 6.3e-05,
+      "execution_sources": [
+        "demo"
+      ],
+      "demo_fallback_detected": false,
       "failure_note": null,
       "trace_kinds": [
         "start",
@@ -257,7 +294,11 @@
       "routing_correct": true,
       "revised": false,
       "revision_count": 0,
-      "latency_s": 5.3e-05,
+      "latency_s": 5.9e-05,
+      "execution_sources": [
+        "demo"
+      ],
+      "demo_fallback_detected": false,
       "failure_note": null,
       "trace_kinds": [
         "start",
@@ -279,7 +320,11 @@
       "routing_correct": true,
       "revised": false,
       "revision_count": 0,
-      "latency_s": 4.9e-05,
+      "latency_s": 5.8e-05,
+      "execution_sources": [
+        "demo"
+      ],
+      "demo_fallback_detected": false,
       "failure_note": null,
       "trace_kinds": [
         "start",
@@ -301,7 +346,11 @@
       "routing_correct": true,
       "revised": false,
       "revision_count": 0,
-      "latency_s": 4.9e-05,
+      "latency_s": 5.8e-05,
+      "execution_sources": [
+        "demo"
+      ],
+      "demo_fallback_detected": false,
       "failure_note": null,
       "trace_kinds": [
         "start",
@@ -323,7 +372,11 @@
       "routing_correct": true,
       "revised": false,
       "revision_count": 0,
-      "latency_s": 5.8e-05,
+      "latency_s": 6.8e-05,
+      "execution_sources": [
+        "demo"
+      ],
+      "demo_fallback_detected": false,
       "failure_note": null,
       "trace_kinds": [
         "start",
@@ -345,7 +398,11 @@
       "routing_correct": true,
       "revised": false,
       "revision_count": 0,
-      "latency_s": 5.1e-05,
+      "latency_s": 6e-05,
+      "execution_sources": [
+        "demo"
+      ],
+      "demo_fallback_detected": false,
       "failure_note": null,
       "trace_kinds": [
         "start",
@@ -367,7 +424,11 @@
       "routing_correct": true,
       "revised": false,
       "revision_count": 0,
-      "latency_s": 5.3e-05,
+      "latency_s": 5.9e-05,
+      "execution_sources": [
+        "demo"
+      ],
+      "demo_fallback_detected": false,
       "failure_note": null,
       "trace_kinds": [
         "start",
@@ -389,7 +450,11 @@
       "routing_correct": true,
       "revised": false,
       "revision_count": 0,
-      "latency_s": 5.2e-05,
+      "latency_s": 6e-05,
+      "execution_sources": [
+        "demo"
+      ],
+      "demo_fallback_detected": false,
       "failure_note": null,
       "trace_kinds": [
         "start",
@@ -411,7 +476,11 @@
       "routing_correct": true,
       "revised": false,
       "revision_count": 0,
-      "latency_s": 4.9e-05,
+      "latency_s": 5.8e-05,
+      "execution_sources": [
+        "demo"
+      ],
+      "demo_fallback_detected": false,
       "failure_note": null,
       "trace_kinds": [
         "start",
@@ -433,7 +502,11 @@
       "routing_correct": true,
       "revised": false,
       "revision_count": 0,
-      "latency_s": 4.9e-05,
+      "latency_s": 5.7e-05,
+      "execution_sources": [
+        "demo"
+      ],
+      "demo_fallback_detected": false,
       "failure_note": null,
       "trace_kinds": [
         "start",
@@ -455,7 +528,11 @@
       "routing_correct": true,
       "revised": false,
       "revision_count": 0,
-      "latency_s": 4.9e-05,
+      "latency_s": 5.8e-05,
+      "execution_sources": [
+        "demo"
+      ],
+      "demo_fallback_detected": false,
       "failure_note": null,
       "trace_kinds": [
         "start",
@@ -477,7 +554,11 @@
       "routing_correct": true,
       "revised": false,
       "revision_count": 0,
-      "latency_s": 5.3e-05,
+      "latency_s": 6e-05,
+      "execution_sources": [
+        "demo"
+      ],
+      "demo_fallback_detected": false,
       "failure_note": null,
       "trace_kinds": [
         "start",
@@ -499,7 +580,11 @@
       "routing_correct": true,
       "revised": false,
       "revision_count": 0,
-      "latency_s": 5.4e-05,
+      "latency_s": 5.9e-05,
+      "execution_sources": [
+        "demo"
+      ],
+      "demo_fallback_detected": false,
       "failure_note": null,
       "trace_kinds": [
         "start",
@@ -521,7 +606,11 @@
       "routing_correct": true,
       "revised": false,
       "revision_count": 0,
-      "latency_s": 5e-05,
+      "latency_s": 5.7e-05,
+      "execution_sources": [
+        "demo"
+      ],
+      "demo_fallback_detected": false,
       "failure_note": null,
       "trace_kinds": [
         "start",
@@ -543,7 +632,11 @@
       "routing_correct": true,
       "revised": false,
       "revision_count": 0,
-      "latency_s": 5.2e-05,
+      "latency_s": 5.6e-05,
+      "execution_sources": [
+        "demo"
+      ],
+      "demo_fallback_detected": false,
       "failure_note": null,
       "trace_kinds": [
         "start",
@@ -565,7 +658,11 @@
       "routing_correct": true,
       "revised": false,
       "revision_count": 0,
-      "latency_s": 4.9e-05,
+      "latency_s": 5.7e-05,
+      "execution_sources": [
+        "demo"
+      ],
+      "demo_fallback_detected": false,
       "failure_note": null,
       "trace_kinds": [
         "start",
@@ -588,7 +685,12 @@
       "routing_correct": true,
       "revised": false,
       "revision_count": 0,
-      "latency_s": 7.9e-05,
+      "latency_s": 0.000135,
+      "execution_sources": [
+        "demo",
+        "demo"
+      ],
+      "demo_fallback_detected": false,
       "failure_note": null,
       "trace_kinds": [
         "start",
@@ -613,7 +715,12 @@
       "routing_correct": true,
       "revised": false,
       "revision_count": 0,
-      "latency_s": 7.9e-05,
+      "latency_s": 0.000118,
+      "execution_sources": [
+        "demo",
+        "demo"
+      ],
+      "demo_fallback_detected": false,
       "failure_note": null,
       "trace_kinds": [
         "start",
@@ -638,7 +745,12 @@
       "routing_correct": true,
       "revised": false,
       "revision_count": 0,
-      "latency_s": 7.6e-05,
+      "latency_s": 9.1e-05,
+      "execution_sources": [
+        "demo",
+        "demo"
+      ],
+      "demo_fallback_detected": false,
       "failure_note": null,
       "trace_kinds": [
         "start",
@@ -663,7 +775,12 @@
       "routing_correct": true,
       "revised": false,
       "revision_count": 0,
-      "latency_s": 9.1e-05,
+      "latency_s": 9.2e-05,
+      "execution_sources": [
+        "demo",
+        "demo"
+      ],
+      "demo_fallback_detected": false,
       "failure_note": null,
       "trace_kinds": [
         "start",
@@ -687,7 +804,11 @@
       "routing_correct": false,
       "revised": false,
       "revision_count": 0,
-      "latency_s": 6.3e-05,
+      "latency_s": 7.1e-05,
+      "execution_sources": [
+        "demo"
+      ],
+      "demo_fallback_detected": false,
       "failure_note": "expected_kind=web_search but plan_roles=['finance']",
       "trace_kinds": [
         "start",
@@ -709,7 +830,11 @@
       "routing_correct": false,
       "revised": false,
       "revision_count": 0,
-      "latency_s": 5.3e-05,
+      "latency_s": 6.1e-05,
+      "execution_sources": [
+        "demo"
+      ],
+      "demo_fallback_detected": false,
       "failure_note": "expected_kind=web_search but plan_roles=['finance']",
       "trace_kinds": [
         "start",
@@ -731,7 +856,11 @@
       "routing_correct": false,
       "revised": false,
       "revision_count": 0,
-      "latency_s": 5.9e-05,
+      "latency_s": 6.5e-05,
+      "execution_sources": [
+        "demo"
+      ],
+      "demo_fallback_detected": false,
       "failure_note": "expected_kind=web_search but plan_roles=['finance']",
       "trace_kinds": [
         "start",
@@ -751,7 +880,9 @@
       "routing_correct": false,
       "revised": false,
       "revision_count": 0,
-      "latency_s": 1.6e-05,
+      "latency_s": 1.8e-05,
+      "execution_sources": [],
+      "demo_fallback_detected": false,
       "failure_note": "empty/whitespace task rejected",
       "trace_kinds": [
         "start",

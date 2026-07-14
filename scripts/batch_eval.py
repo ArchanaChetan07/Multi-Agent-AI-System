@@ -33,11 +33,31 @@ def run_batch(*, demo: bool = True) -> dict:
     orch = AgentOrchestrator(demo=demo)
     tasks = benchmark_tasks()
     rows: list[dict] = []
+    live_fallback_detected = False
 
     for task in tasks:
         t0 = time.perf_counter()
         result = orch.run(task.text)
         latency_s = time.perf_counter() - t0
+        execution_sources: list[str] = []
+        task_fallback_detected = False
+        for observation in result.observations:
+            if observation.get("role") == "finance":
+                source = str(observation.get("source") or "unknown")
+                execution_sources.append(source)
+                task_fallback_detected |= not demo and source == "demo"
+            elif observation.get("role") == "web_search":
+                hits = observation.get("hits") or []
+                source = "duckduckgo" if hits else "no-results"
+                if any(
+                    "example.com" in str(hit.get("url") or "")
+                    or "[DEMO]" in str(hit.get("snippet") or "")
+                    for hit in hits
+                ):
+                    source = "demo"
+                    task_fallback_detected = not demo
+                execution_sources.append(source)
+        live_fallback_detected |= task_fallback_detected
 
         plan_roles = [s["agent_role"] for s in result.plan]
         kinds = [e["kind"] for e in result.trace]
@@ -76,13 +96,20 @@ def run_batch(*, demo: bool = True) -> dict:
                 "revised": rev_count > 0,
                 "revision_count": rev_count,
                 "latency_s": round(latency_s, 6),
+                "execution_sources": execution_sources,
+                "demo_fallback_detected": task_fallback_detected,
                 "failure_note": failure_note,
                 "trace_kinds": kinds,
             }
         )
 
     metrics = compute_batch_metrics(rows)
-    metrics["mode"] = "DEMO_MODE" if demo else "LIVE"
+    metrics["mode"] = (
+        "DEMO_MODE"
+        if demo
+        else ("LIVE_WITH_DEMO_FALLBACK" if live_fallback_detected else "LIVE")
+    )
+    metrics["live_fallback_detected"] = live_fallback_detected if not demo else False
     metrics["per_task"] = rows
     return metrics
 
@@ -92,7 +119,10 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument(
         "--live",
         action="store_true",
-        help="Run with demo=False (still requires optional live deps; may fall back)",
+        help=(
+            "Request live tools; artifacts are labeled LIVE_WITH_DEMO_FALLBACK "
+            "if any deterministic fallback is detected"
+        ),
     )
     parser.add_argument(
         "--out",
